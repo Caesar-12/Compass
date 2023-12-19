@@ -1,0 +1,12 @@
+Homepage:
+    -> login/signup page
+    -> app description with image demonstration
+    ->
+
+User_data:
+    -> id
+    -> name
+    -> level of education
+    -> Category
+    -> tasks under Category with deadlines
+
