@@ -14,15 +14,26 @@ class BaseModel(models.Model):
         self.__dict = {}
 
 
-    def create_user(self, user_dict) -> None:
-        """creates a user"""
-        pass
+    def all(self) -> None:
+        """gets all obj"""
+        return self.objects.all()
 
-    def get_user(self, user_id) -> None:
-        pass
+
+    def new(self):
+        """Inserts data into database"""
+        self.save()
+
+
+    def update(self, user_id, field, value):
+        """Updates users data in the db"""
+        obj_update = self.objects.get(user_id=user_id)
+        eval('obj_update.{} = {}'.format(field, value))
+        obj_update.save()
+
 
 class User(BaseModel):
     """Defines a user"""
+    __tablename__ = 'Users'
     user_id = models.UUIDField(primary_key=True, unique=True, default=uuid4())
     first_name = models.CharField(max_length=50, default='Name', blank=False)
     last_name = models.CharField(max_length=50, default='Name')
@@ -35,6 +46,7 @@ class User(BaseModel):
 
 class DailyAgenda(BaseModel):
     """Defines a daily tasks"""
+    __tablename__ = 'DailyAgenda'
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     dow = models.CharField(max_length=50, default='Not applicable', blank=False)
     category = models.CharField(max_length=50, default='Others', blank=False)

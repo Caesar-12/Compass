@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import User, DailyAgenda
 
 
 # Create your views here.
@@ -19,9 +20,9 @@ def signup(request):
 
 def login_details(request):
     """Receives user login data """
-    user_data = {}
+    new_user = User()
     for data in ['firstName', 'lastName', 'age', 'ed_level']:
-        user_data[data] = request.POST[data]
+        user_data = request.POST[data]
 
     return render(request, 'login_details.html')
 
