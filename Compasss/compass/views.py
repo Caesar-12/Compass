@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
-from .models import User, DailyAgenda
+from .models import UserProfile, DailyAgenda
+from django.contrib.auth.models import User, auth
+from django.contrib import messages
 
 
 # Create your views here.
@@ -15,26 +17,32 @@ def home(request):
 
 def signup(request):
     """Recieves user basic data for account creation"""
+    new_user = UserProfile()
+    if request.method == 'POST':
+        for data in ['first_name', 'last_name', 'age', 'ed_level',
+                     'username', 'email', 'password', 'c_password']:
+            setattr(new_user, data, request.POST[data])
+
+        if new_user.c_password == new_user.password:
+            if UserProfile.objects.filter(email=new_user.email).exists:
+                messages.info(request, 'Email already in use...')
+                return redirect('signup')
+            elif UserProfile.objects.filter(user_name=new_user.username).exists:
+                messages.info(request, 'Username already in use...')
+                return redirect('signup')
+            else:
+                new_user.new()
+                return redirect('login')
+        else:
+            messages.info(request, 'Password does not match')
+            return redirect('signup')
+
     return render(request, 'signup.html')
 
 
-def login_details(request):
+def login(request):
     """Receives user login data """
-    new_user = User()
-    for data in ['firstName', 'lastName', 'age', 'ed_level']:
-        user_data = request.POST[data]
-
-    return render(request, 'login_details.html')
-
-
-def match(request):
-    """Checks if a user already exists or not"""
-    user_log_det = {}
-    for detail in ['email', 'password', 'c_password']:
-        user_log_det[detail] = request.POST[detail]
-    if user_log_det['password'] != user_log_det['c_password']:
-        login_details(request)
-    return render(request, 'matc.html')
+    return render(request, 'login.html')
 
 
 def dashboard(request):

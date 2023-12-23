@@ -9,17 +9,21 @@
 </head>
 <body>
 
+    {% for message in messages %}
+    <h5>{{message}}</h5>
+    {% endfor %}
+
 <div class="container">
     <h1>Compass Signup</h1>
-    <form action="login_details" method="POST">
+    <form action="signup" method="POST">
         {% csrf_token %}
         <div class="form-group">
             <label for="firstName">First Name:</label>
-            <input type="text" class="form-control" id="firstName" name="firstName" required>
+            <input type="text" class="form-control" id="first_name" name="first_name" required>
         </div>
         <div class="form-group">
             <label for="lastName">Last Name:</label>
-            <input type="text" class="form-control" id="lastName" name="lastName" required>
+            <input type="text" class="form-control" id="last_name" name="last_name" required>
         </div>
         <div class="form-group">
             <label for="age">Age:</label>
@@ -30,8 +34,20 @@
             <input type="text" class="form-control" id="ed_level" name="ed_level" required>
         </div>
         <div class="form-group">
-            <label for="ed_level">Preferred Username:</label>
-            <input type="text" class="form-control" id="user_name" name="user_name" required>
+            <label for="username">Preferred Username:</label>
+            <input type="text" class="form-control" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Re-enter password:</label>
+            <input type="password" class="form-control" id="password" name="c_password" required>
         </div>
         <button type="submit" class="btn btn-primary">Next</button>
     </form>
