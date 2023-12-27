@@ -18,12 +18,10 @@ def home(request):
 def signup(request):
     """Recieves user basic data for account creation"""
     new_user = UserProfile()
-    if request.method == 'POST':
-        for data in ['first_name', 'last_name', 'age', 'ed_level',
-                     'username', 'email', 'password', 'c_password']:
-            setattr(new_user, data, request.POST[data])
 
-        if new_user.c_password == new_user.password:
+    if request.method == 'POST':
+        # Validations
+        if request.POST['c_password'] == request.POST['password']:
             if UserProfile.objects.filter(email=new_user.email).exists:
                 messages.info(request, 'Email already in use...')
                 return redirect('signup')
