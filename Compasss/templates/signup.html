@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compass Signup</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
 
@@ -13,45 +15,71 @@
     <h5>{{message}}</h5>
     {% endfor %}
 
-<div class="container">
-    <h1>Compass Signup</h1>
-    <form action="signup" method="POST">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="firstName">First Name:</label>
-            <input type="text" class="form-control" id="first_name" name="first_name" required>
+    <!-- Contact-->
+    <section class="page-section" id="contact">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-8 col-xl-6 text-center">
+                    <h2 class="mt-0">Compass signup</h2>
+                    <hr class="divider" />
+                </div>
+            </div>
+            <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+                <div class="col-lg-6">
+                    <form action="signup" method="POST" id="contactForm">
+                        {% csrf_token %}
+                        <!-- Name input-->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="name" type="text" placeholder="Enter your first name..." name="first_name" required/>
+                            <label for="name">First name</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="name" type="text" placeholder="Enter your last name..." name="last_name" required/>
+                            <label for="name">Last name</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="age" type="number" placeholder="Enter your age..." name="age" required/>
+                            <label for="name">Age</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="name" type="text" placeholder="Enter your username..." name="username" required/>
+                            <label for="name">Username</label>
+                        </div>
+                        <!-- Email address input-->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="email" type="email" placeholder="name@example.com" name="email" required />
+                            <label for="email">Email address</label>
+                        </div>
+                        <!-- Phone number input-->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="phone" type="tel" placeholder="(234) 123-4567-890" name="phone" required/>
+                            <label for="phone">Phone number</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="name" type="password" placeholder="Password..." name="password" required/>
+                            <label for="password">Password:</label>
+    
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="name" type="password" placeholder="Confirm password.." name="c_password" required/>
+                            <label for="password">Confirm password:</label>
+                        </div>
+                        <div class="d-grid"><button class="btn btn-primary btn-xl enabled" id="submitButton" type="submit">Submit</button></div>
+                        <div class="row gx-4 gx-lg-5 justify-content-center">
+                            <div class="col-lg-8 col-xl-6 text-center">
+                                <br/><a class="mt-0" href="login">Already have an account? LOGIN...</a>
+                                <hr class="divider" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-4 text-center mb-5 mb-lg-0">
+                    <i class="bi-phone fs-2 mb-3 text-muted"></i>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="lastName">Last Name:</label>
-            <input type="text" class="form-control" id="last_name" name="last_name" required>
-        </div>
-        <div class="form-group">
-            <label for="age">Age:</label>
-            <input type="number" class="form-control" id="age" name="age" required>
-        </div>
-        <div class="form-group">
-            <label for="ed_level">Education Level:</label>
-            <input type="text" class="form-control" id="ed_level" name="ed_level" required>
-        </div>
-        <div class="form-group">
-            <label for="username">Preferred Username:</label>
-            <input type="text" class="form-control" id="username" name="username" required>
-        </div>
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" class="form-control" id="password" name="password" required>
-        </div>
-        <div class="form-group">
-            <label for="password">Re-enter password:</label>
-            <input type="password" class="form-control" id="password" name="c_password" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Next</button>
-    </form>
-</div>
-
+    </section>
 </body>
 </html>

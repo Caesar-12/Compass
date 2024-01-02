@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>Student Timetable</title>
+</head>
+<body>
+    <div class="timetable">
+        <div class="header">
+            <div class="cell"></div>
+            <div class="cell">Monday</div>
+            <div class="cell">Tuesday</div>
+            <div class="cell">Wednesday</div>
+            <div class="cell">Thursday</div>
+            <div class="cell">Friday</div>
+        </div>
+        <div class="row">
+            <div class="cell">8:00 AM - 9:00 AM</div>
+            <div class="cell">Math</div>
+            <div class="cell">Science</div>
+            <div class="cell">English</div>
+            <div class="cell">History</div>
+            <div class="cell">-</div>
+        </div>
+        <div class="row">
+            <div class="cell">9:00 AM - 10:00 AM</div>
+            <div class="cell">Physics</div>
+            <div class="cell">-</div>
+            <div class="cell">Math</div>
+            <div class="cell">Geography</div>
+            <div class="cell">-</div>
+        </div>
+        <!-- Add more rows for different time slots -->
+        <div><br/><a href="/">Logout</a></div>
+    </div>
+</body>
+</html>

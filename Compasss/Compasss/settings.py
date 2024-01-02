@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'Compasss.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Compass_DB',
+        'NAME': 'compass_db',
         'USER': 'compass',
         'PASSWORD': 'blessing12',
         'HOST': 'localhost',
