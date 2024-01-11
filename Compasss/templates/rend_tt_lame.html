@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Timetable</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Class Timetable</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>9:00 AM - 10:30 AM</td>
+                <td>Math</td>
+                <td>English</td>
+                <td>Physics</td>
+                <td>Chemistry</td>
+                <td>History</td>
+            </tr>
+            <tr>
+                <td>11:00 AM - 12:30 PM</td>
+                <td>Biology</td>
+                <td>Computer Science</td>
+                <td>Geography</td>
+                <td>Physical Education</td>
+                <td>French</td>
+            </tr>
+            <!-- Add more rows for additional time slots -->
+        </tbody>
+    </table>
+    <a href="dashboard"><button type="button">Dashboard</button></a>
+</body>
+</html>

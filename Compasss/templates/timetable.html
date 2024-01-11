@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Timetable Form</title>
+</head>
+<body>
+    <h1>Class Timetable Form</h1>
+    
+    <form id="timetableForm">
+        <!-- Assuming the timetable is a list of classes with properties like day, time, etc. -->
+        <label for="day">Day:</label>
+        <input type="text" id="day" name="day" required>
+
+        <label for="time">From:</label>
+        <input type="text" id="time" name="from_time" required>
+
+        <label for="time">To:</label>
+        <input type="text" id="time" name="to_time" required>
+
+        <!-- Add more fields as needed -->
+
+        <button type="button" onclick="addClass()">Add Class</button>
+
+        <div id="timetableOutput"></div>
+        <br/>
+        <button type="button" onclick="submitTimetable()">Submit Timetable</button>
+    </form>
+
+    <script>
+        let timetableData = [];
+
+        function addClass() {
+            const dayInput = document.getElementById('day').value;
+            const timeInput = document.getElementById('time').value;
+
+            // Validate inputs if needed
+
+            // Add class to timetableData array
+            timetableData.push({ day: dayInput, time: timeInput });
+
+            // Display added class in a div
+            displayTimetable();
+        }
+
+        function displayTimetable() {
+            const timetableOutput = document.getElementById('timetableOutput');
+            timetableOutput.innerHTML = '<h3>Class Timetable:</h3>';
+
+            timetableData.forEach((classData, index) => {
+                timetableOutput.innerHTML += `<p>Class ${index + 1}: Day - ${classData.day}, Time - ${classData.time}</p>`;
+            });
+        } 
+
+        function submitTimetable() {
+            // Send timetableData to the backend as JSON
+            const jsonTimetable = JSON.stringify(timetableData);
+            
+            // Assuming you have a backend endpoint to handle the JSON data
+            // You can use fetch or another method to send the data to the server
+            fetch('/backend/endpoint', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: jsonTimetable,
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>

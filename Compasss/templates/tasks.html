@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Tracker</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        #taskList {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .taskItem {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .taskItem label {
+            margin-right: 10px;
+        }
+
+        .taskItem button {
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Task Tracker</h1>
+
+    <form id="taskForm">
+        <label for="taskInput">Add Task:</label>
+        <input type="text" id="taskInput" name="taskInput" required>
+        <button type="button" onclick="addTask()">Add</button>
+    </form>
+
+    <ul id="taskList"></ul>
+
+    <script>
+        function addTask() {
+            const taskInput = document.getElementById('taskInput').value;
+
+            if (taskInput.trim() !== '') {
+                const taskList = document.getElementById('taskList');
+                const taskItem = document.createElement('li');
+                taskItem.className = 'taskItem';
+
+                const taskLabel = document.createElement('label');
+                taskLabel.textContent = taskInput;
+
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.onclick = function() {
+                    taskList.removeChild(taskItem);
+                };
+
+                taskItem.appendChild(taskLabel);
+                taskItem.appendChild(deleteButton);
+                taskList.appendChild(taskItem);
+
+                // Clear the input field after adding the task
+                document.getElementById('taskInput').value = '';
+            }
+        }
+    </script>
+    <a href="dashboard"><button type="button">Dashboard</button></a>
+</body>
+</html>

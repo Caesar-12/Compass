@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goals Tracker</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        #goalList {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .goalItem {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .goalItem label {
+            margin-right: 10px;
+        }
+
+        .goalItem button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Goals Tracker</h1>
+
+    <form id="goalForm">
+        <label for="goalInput">Add Goal:</label>
+        <input type="text" id="goalInput" name="goalInput" required>
+        <button type="button" onclick="addGoal()">Add</button>
+    </form>
+
+    <ul id="goalList"></ul>
+
+    <script>
+        function addGoal() {
+            const goalInput = document.getElementById('goalInput').value;
+
+            if (goalInput.trim() !== '') {
+                const goalList = document.getElementById('goalList');
+                const goalItem = document.createElement('li');
+                goalItem.className = 'goalItem';
+
+                const goalLabel = document.createElement('label');
+                goalLabel.textContent = goalInput;
+
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.onclick = function() {
+                    goalList.removeChild(goalItem);
+                };
+
+                goalItem.appendChild(goalLabel);
+                goalItem.appendChild(deleteButton);
+                goalList.appendChild(goalItem);
+
+                // Clear the input field after adding the goal
+                document.getElementById('goalInput').value = '';
+            }
+        }
+    </script>
+    <br/>
+    <a href="dashboard"><button type="button">Dashboard</button></a>
+</body>
+</html>

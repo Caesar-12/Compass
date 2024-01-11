@@ -1,0 +1,19 @@
+{
+    class: {
+        Monday: {},
+        Tuesday: {},
+        Wednesday: {},
+        Thursday: {},
+        Friday: {},
+    },
+    goals: {
+        description: "",
+        deadline: "",
+        status: ""
+    },
+    dailytasks: {
+        title: "",
+        details: "",
+        duration: ""
+    }
+}

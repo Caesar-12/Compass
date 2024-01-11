@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compass Login</title>
+    <title>USER </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
@@ -15,33 +15,26 @@
     <h5>{{message}}</h5>
     {% endfor %}
 
-    <!-- Contact-->
     <section class="page-section" id="contact">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-8 col-xl-6 text-center">
-                    <h2 class="mt-0">Compass Login</h2>
+                    <h2 class="mt-0">Email Verification</h2>
                     <hr class="divider" />
                 </div>
             </div>
             <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
                 <div class="col-lg-6">
-                    <form action="login" method="POST" id="contactForm">
+                    <form action="validates" method="POST" id="contactForm">
                         {% csrf_token %}
-                        <!-- Email address input-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="email" type="email" placeholder="name@example.com" name="email" required />
-                            <label for="email">Email address</label>
+                            <input class="form-control" id="vcode" type="number" placeholder="000000" name="vcode" required />
+                            <label for="email">OTP</label>
                         </div>
-                        <div class="form-floating mb-3">
-                            <input class="form-control" id="name" type="password" placeholder="Password..." name="password" required/>
-                            <label for="password">Password:</label>
-    
-                        </div>
-                        <div class="d-grid"><button class="btn btn-primary btn-xl enabled" id="submitButton" type="submit">Submit</button></div>
+                        <div class="d-grid"><button class="btn btn-primary btn-xl enabled" id="submitButton" type="submit">Verify</button></div>
                         <div class="row gx-4 gx-lg-5 justify-content-center">
                             <div class="col-lg-8 col-xl-6 text-center">
-                                <br/><a class="mt-0" href="signup">New here? Signup...</a>
+                                <br/><a class="mt-0" href="verify">Resend code</a>
                                 <hr class="divider" />
                             </div>
                         </div>

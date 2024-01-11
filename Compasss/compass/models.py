@@ -19,15 +19,20 @@ class UserProfile(models.Model):
     age = models.IntegerField(blank=False)
     email = models.EmailField()
     phone = models.CharField(max_length=14, validators=[phone_num_valid], default='nil')
+    status = models.BooleanField(default=False)
     password = models.CharField(max_length=50)
     c_password = models.CharField(max_length=50)
+
+
+    @property
+    def agenda(self):
+        """Returns all agenda off the particular user"""
+        return self.dailyagenda_set.all()
 
 
 class DailyAgenda(models.Model):
     """Defines a daily tasks"""
     # __tablename__ = 'DailyAgenda'
     user_id = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-    dow = models.CharField(max_length=50, default='Not applicable', blank=False)
     category = models.CharField(max_length=50, default='Others', blank=False)
-    has_deadline = models.BooleanField()
-    tasks = models.JSONField()
+    tasks = models.JSONField(default={})
